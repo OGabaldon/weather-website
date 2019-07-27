@@ -22,30 +22,30 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Clima',
+        title: 'Weather',
         name: 'Osvaldo G'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'Acerca de',
+        title: 'About',
         name: 'Osvaldo G'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        title: 'Ayuda',
+        title: 'Help',
         name: 'Osvaldo G',
-        helpText: 'Pagina de ayuda'
+        helpText: 'Help page text'
     })
 })
 
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
-            error: 'Debes proveer una ubicacion'
+            error: 'You must provide a search term'
         }) 
     }
 
@@ -70,7 +70,7 @@ app.get('/weather', (req, res) => {
 app.get('/products', (req, res) => {
     if (!req.query.search) {
         return res.send({
-            error: 'Debes proveer una busqueda'
+            error: 'You must provide a search term'
         })
     }
     console.log(req.query.search)
@@ -83,7 +83,7 @@ app.get('/help/*', (req, res) => {
     res.render('404', {
         title: '404',
         name: 'Osvaldo G',
-        errorMessage: 'Articulo de ayuda no encontrado'
+        errorMessage: 'Help article not found'
     })
 })
 
@@ -91,7 +91,7 @@ app.get('*', (req, res) => {
     res.render('404', {
         title: '404',
         name: 'Osvaldo G',
-        errorMessage: 'Pagina no encontrada'
+        errorMessage: 'Page not found'
     })
 })
 
